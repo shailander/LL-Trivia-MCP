@@ -119,5 +119,8 @@ async def get_questions(program_id: str, env: Env = "production") -> list[dict]:
     return sorted(questions, key=lambda q: (q.get("custom_data") or {}).get("sort_id", 0))
 
 
+# Vercel (and any ASGI host) serves this; serverless has no sticky sessions, so stateless.
+app = mcp.http_app(stateless_http=True, json_response=True)
+
 if __name__ == "__main__":
     mcp.run()

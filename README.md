@@ -89,6 +89,33 @@ claude mcp add --transport http livelike-trivia http://localhost:8000/mcp
 
 The server has no authentication. Don't expose it on the public internet as-is.
 
+## Deploy to Vercel
+
+`server.py` exports an ASGI `app` (stateless, JSON responses) that Vercel's Python runtime serves.
+You don't need any config files.
+
+1. Push this repo to GitHub.
+2. In Vercel: **Add New → Project**, import the repo, leave the framework preset on **Other**, and deploy.
+   Vercel installs dependencies from `pyproject.toml` and `uv.lock`.
+3. Your MCP endpoint is `https://<your-project>.vercel.app/mcp`. Connect to it:
+
+   ```bash
+   claude mcp add --transport http livelike-trivia https://<your-project>.vercel.app/mcp
+   ```
+
+   For Claude Desktop, Cursor or VS Code, add it as a remote server with
+   `"type": "http", "url": "https://<your-project>.vercel.app/mcp"`.
+4. Smoke test: run `/mcp` in Claude Code, check that `livelike-trivia` lists 5 tools, then ask it to call
+   `get_doc` with `overview`.
+
+To test the same app locally before deploying:
+
+```bash
+uv run uvicorn server:app --port 8000      # then connect to http://localhost:8000/mcp
+```
+
+Every push to the default branch redeploys automatically, so editing a doc and pushing updates the server for everyone.
+
 ## Use it
 
 Once connected, ask your assistant something like:
