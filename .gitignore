@@ -1,0 +1,16 @@
+# Demo game built with this MCP (kept out of the MCP repo)
+trivia/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Env / secrets
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

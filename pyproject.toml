@@ -1,0 +1,6 @@
+[project]
+name = "livelike-trivia"
+version = "0.1.0"
+description = "MCP server that teaches an AI how to build a LiveLike Trivia game end to end"
+requires-python = ">=3.10"
+dependencies = ["fastmcp>=2.10", "httpx"]
