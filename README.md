@@ -92,7 +92,7 @@ The server has no authentication. Don't expose it on the public internet as-is.
 ## Deploy to Vercel
 
 `server.py` exports an ASGI `app` (stateless, JSON responses) that Vercel's Python runtime serves.
-You don't need any config files.
+`vercel.json` points Vercel at `server.py`, bundles `docs/` with the function, and routes every path to it.
 
 1. Push this repo to GitHub.
 2. In Vercel: **Add New → Project**, import the repo, leave the framework preset on **Other**, and deploy.
