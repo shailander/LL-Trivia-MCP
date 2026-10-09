@@ -8,6 +8,31 @@ You provide your **clientId** and **gameId** (and optionally an **instanceId** o
 questions about the screens you want. The AI builds the game. Your CMS configuration drives the behaviour.
 Theming is up to you: the docs deliberately leave out styling.
 
+## Quick start: hosted server
+
+The server is deployed at **`https://ll-trivia-mcp.vercel.app/mcp`**. Nothing to install.
+
+Claude Code (`-s user` makes it available in all your projects):
+
+```bash
+claude mcp add --transport http -s user livelike-trivia https://ll-trivia-mcp.vercel.app/mcp
+```
+
+Claude Desktop, Cursor, VS Code and other clients: add it as a remote server:
+
+```json
+{
+  "mcpServers": {
+    "livelike-trivia": { "type": "http", "url": "https://ll-trivia-mcp.vercel.app/mcp" }
+  }
+}
+```
+
+Check it with `claude mcp list`, or `/mcp` inside a session: `livelike-trivia` should list 5 tools.
+If the name is already taken by a local setup, remove that first: `claude mcp remove livelike-trivia -s user`.
+
+The sections below are only for running the server yourself.
+
 ## Requirements
 
 - [uv](https://docs.astral.sh/uv/) (it installs Python 3.10+ and the dependencies for you)
@@ -97,14 +122,14 @@ The server has no authentication. Don't expose it on the public internet as-is.
 1. Push this repo to GitHub.
 2. In Vercel: **Add New → Project**, import the repo, leave the framework preset on **Other**, and deploy.
    Vercel installs dependencies from `pyproject.toml` and `uv.lock`.
-3. Your MCP endpoint is `https://<your-project>.vercel.app/mcp`. Connect to it:
+3. Your MCP endpoint is `https://ll-trivia-mcp.vercel.app/mcp`. Connect to it:
 
    ```bash
-   claude mcp add --transport http livelike-trivia https://<your-project>.vercel.app/mcp
+   claude mcp add --transport http livelike-trivia https://ll-trivia-mcp.vercel.app/mcp
    ```
 
    For Claude Desktop, Cursor or VS Code, add it as a remote server with
-   `"type": "http", "url": "https://<your-project>.vercel.app/mcp"`.
+   `"type": "http", "url": "https://ll-trivia-mcp.vercel.app/mcp"`.
 4. Smoke test: run `/mcp` in Claude Code, check that `livelike-trivia` lists 5 tools, then ask it to call
    `get_doc` with `overview`.
 
