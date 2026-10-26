@@ -66,10 +66,11 @@ Note the trailing slash on the LIVELIKE base. Paths are appended directly, e.g. 
 - `instance-resolution`: which instance to play when no `instanceId` is given.
 - `data-merge`: how to turn widgets and interactions into question state. **Read this one.**
 - `live-trivia`: (advanced) time-synced live trivia.
+- `analytics`: events to track, their properties, and the 2-second batching rules.
 - `apis/instance-list`, `apis/instance-details`, `apis/program-widgets`, `apis/widget-interactions`,
-  `apis/widget-impression`, `apis/submit-interaction`, `apis/trivia-credit`, `apis/game-completed`
+  `apis/widget-impression`, `apis/submit-interaction`, `apis/trivia-credit`, `apis/game-completed`, `apis/analytics`
 - `screens/welcome`, `screens/game`, `screens/result`
 
 ## Out of scope
 
-Theme and whitelabel styling, localization and translations, analytics, leaderboards and rewards.
+Theme and whitelabel styling, localization and translations, leaderboards and rewards.

@@ -172,7 +172,7 @@ and the credit and game-completed calls are documented, but your app makes those
 server.py            all tools
 docs/                the static documentation the tools return
   overview.md, integration-questions.md, sdk-init.md, flow.md,
-  instance-resolution.md, data-merge.md, live-trivia.md
+  instance-resolution.md, data-merge.md, live-trivia.md, analytics.md
   apis/              one page per API
   screens/           welcome.md, game.md, result.md
 test_server.py       self-check

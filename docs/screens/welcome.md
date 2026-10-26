@@ -16,7 +16,7 @@ The intro screen shown before the quiz. Style it with the app's own design syste
 ## Behaviour
 
 - Show this screen only when `skip` is false and not every question is already answered (otherwise go to RESULT).
-- **Start** sets `step = 'GAME'` at the first unanswered question.
+- **Start** sets `step = 'GAME'` at the first unanswered question and tracks `click_play` (also tracked when `skip` auto-starts play). See `analytics`.
 - **Live trivia before start time:** replace the start button with a countdown to `publish_time`, and move to GAME automatically when it reaches 0. See `live-trivia`.
 
 ## Sketch

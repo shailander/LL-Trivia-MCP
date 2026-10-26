@@ -48,10 +48,11 @@ const text = r.share.msg.replace(/\{\{(score|totalQuestions)\}\}/g, (_, k) => St
 if (navigator.share) navigator.share({ text, url: r.share.deep_link })
 else navigator.clipboard.writeText(`${text}\nPlay the game and prove your skills: ${r.share.deep_link}`)
 ```
-On mobile, use the platform share sheet.
+On mobile, use the platform share sheet. Track `click_share` after triggering the share (see `analytics`).
 
 ## Entering RESULT
 
-- From GAME with every question answered: send `apis/game-completed` once.
+- First time from GAME: track the `game_completed` analytics event (see `analytics`).
+- From GAME with every question answered: also send `apis/game-completed` once.
 - On load, when everything was already answered: go straight here and do **not** send game-completed.
 - Once the user reaches RESULT, every later visit to GAME is review mode.

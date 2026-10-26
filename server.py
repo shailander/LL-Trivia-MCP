@@ -34,6 +34,7 @@ Topic = Literal[
     "instance-resolution",
     "data-merge",
     "live-trivia",
+    "analytics",
     "apis/instance-list",
     "apis/instance-details",
     "apis/program-widgets",
@@ -42,6 +43,7 @@ Topic = Literal[
     "apis/submit-interaction",
     "apis/trivia-credit",
     "apis/game-completed",
+    "apis/analytics",
     "screens/welcome",
     "screens/game",
     "screens/result",
@@ -72,7 +74,7 @@ def start_trivia_integration() -> str:
 @mcp.tool
 def get_doc(topic: Topic) -> str:
     """Return one documentation page: SDK init, an API reference (apis/*), a screen spec
-    (screens/*), data merge rules, instance resolution or live trivia timing."""
+    (screens/*), data merge rules, instance resolution, live trivia timing or analytics."""
     return read_doc(topic)
 
 

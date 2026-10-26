@@ -4,6 +4,7 @@
 
 ```
 1. initLiveLike(clientId, accessToken?)                  -> { profileId, authToken }        [sdk-init]
+   start analytics buffer, track session_start                                               [analytics]
 2. instanceId given?
      no  -> GET instance list, pick instance by time       -> instanceId                     [instance-resolution, apis/instance-list]
             nothing playable -> show "No game" screen, stop
@@ -24,6 +25,9 @@
      next -> next unanswered question; none left -> RESULT
 8. Entering RESULT from GAME with every question answered -> POST game-completed (once)     [apis/game-completed]
 9. RESULT: score, title, points, review, share                                              [screens/result]
+
+Analytics run alongside every step: click_play, game_completed, click_share, session_stop,
+batched every 2 s to POST {ARCADE}/v1/minigames/analytics/                                   [analytics, apis/analytics]
 ```
 
 ## Screen state machine
